@@ -24,7 +24,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
         listaAlunos.setAdapter(adapter);
         //atribuirEventodeListaSimples();
-        atribuirEventodeListaLongo();   
+        atribuirEventodeListaLongo();
     }
 
     private void atribuirEventodeListaSimples(){
@@ -34,7 +34,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> adapterView, View view, int posicao, long id) {
                     Toast.makeText(view.getContext(), "Posicao selecionada: " + posicao, Toast.LENGTH_LONG).show();
                 }
-            });
+            });         
         }
     }
     private void atribuirEventodeListaLongo(){
