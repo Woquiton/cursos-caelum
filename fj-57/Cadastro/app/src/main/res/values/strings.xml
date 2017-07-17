@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Cadastro</string>
+    <string name="lbl_nome">Nome</string>
+    <string name="lbl_telefone">Telefone</string>
+    <string name="lbl_endereco">Endereço</string>
+    <string name="lbl_site">Site</string>
+    <string name="lbl_btn_gravar">Button</string>
 </resources>
