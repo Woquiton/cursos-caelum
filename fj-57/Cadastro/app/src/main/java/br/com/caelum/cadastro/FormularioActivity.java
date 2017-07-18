@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class FormularioActivity extends AppCompatActivity {
+    private FormAlunoHelper formAlunoHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +17,10 @@ public class FormularioActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_formulario);
+
+        formAlunoHelper = new FormAlunoHelper(this);
+
+
         adicionarEventoSalvareFechar();
     }
 
@@ -29,6 +34,7 @@ public class FormularioActivity extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 
     @Override
@@ -45,13 +51,25 @@ public class FormularioActivity extends AppCompatActivity {
                 return true;
             }
             case R.id.menu_formulario_ok: {
-
-                Toast.makeText(this, "ok", Toast.LENGTH_LONG).show();
-                finish();
+                if (formAlunoHelper.isInvalido()){
+                    formAlunoHelper.exibirErro(this);
+                }
+                else{
+                    finish();
+                }
                 return false;
             }
             default: return super.onOptionsItemSelected(item);
         }
 
     }
+
+    private boolean salvo(){
+        if (formAlunoHelper.isInvalido()){
+            //TODO: Criar rotina de persistencia
+            return true;
+        }
+        return false;
+    }
+
 }

@@ -5,4 +5,5 @@
     <string name="lbl_endereco">Endereço</string>
     <string name="lbl_site">Site</string>
     <string name="lbl_btn_gravar">Button</string>
+    <string name="msgNomeInvalido">Nome inválido</string>
 </resources>
