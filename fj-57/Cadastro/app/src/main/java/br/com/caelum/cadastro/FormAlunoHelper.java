@@ -69,7 +69,7 @@ public class FormAlunoHelper {
         Aluno aluno = new Aluno(this.edtNome.toString());
 
         aluno.setEndereco(this.edtEndereco.toString());
-        aluno.setNota(new BigDecimal(this.rtBarNota.getRating()));
+        aluno.setNota(this.rtBarNota.getRating());
         aluno.setSite(this.edtSite.toString());
         aluno.setTelefone(this.edtTelefone.toString());
 

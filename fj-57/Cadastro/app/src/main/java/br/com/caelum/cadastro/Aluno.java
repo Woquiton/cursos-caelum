@@ -13,7 +13,7 @@ public class Aluno {
     private String telefone;
     private String endereco;
     private String site;
-    private BigDecimal nota;
+    private double nota;
 
     public Aluno(String nome) {
         this.nome = nome;
@@ -59,11 +59,11 @@ public class Aluno {
         this.site = site;
     }
 
-    public BigDecimal getNota() {
+    public double getNota() {
         return nota;
     }
 
-    public void setNota(BigDecimal nota) {
+    public void setNota(double nota) {
         this.nota = nota;
     }
 

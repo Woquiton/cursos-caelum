@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class ListaAlunosActivity extends AppCompatActivity {
 
     private ListView listaAlunos;
@@ -19,15 +21,15 @@ public class ListaAlunosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_alunos);
 
-        String [] alunos = DataClass.geradordeAlunosAsString();
-        this.listaAlunos = (ListView)findViewById(R.id.lvw_lista_alunos);
+        //String [] alunos = DataClass.geradordeAlunosAsString();
+       // this.listaAlunos = (ListView)findViewById(R.id.lvw_lista_alunos);
 
-        ArrayAdapter<String>adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1, alunos);
+       // ArrayAdapter<String>adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1, alunos);
 
-        listaAlunos.setAdapter(adapter);
+       // listaAlunos.setAdapter(adapter);
         //atribuirEventodeListaSimples();
-        atribuirEventodeListaLongo();
-        adicionarEventoparaAbrirFormulariodeAdicao();
+        //atribuirEventodeListaLongo();
+       // adicionarEventoparaAbrirFormulariodeAdicao();
     }
 
     private void atribuirEventodeListaSimples(){
@@ -58,10 +60,25 @@ public class ListaAlunosActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+
                 Intent it = new Intent(view.getContext(), FormularioActivity.class);
                 startActivity(it);
             }
         });
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        this.listaAlunos = (ListView)findViewById(R.id.lvw_lista_alunos);
+        AlunoDAO alunoDAO = new AlunoDAO(this);
+        ArrayList<Aluno>alunos = alunoDAO.buscarTodos();
+
+        ArrayAdapter<Aluno>adapter = new ArrayAdapter<Aluno>(this, R.layout.item_aluno, alunos);
+
+        listaAlunos.setAdapter(adapter);
+        alunoDAO.liberarRecursos();
+
     }
 }
