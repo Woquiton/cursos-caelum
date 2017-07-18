@@ -1,5 +1,7 @@
 package br.com.caelum.cadastro;
 
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +27,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
         listaAlunos.setAdapter(adapter);
         //atribuirEventodeListaSimples();
         atribuirEventodeListaLongo();
+        adicionarEventoparaAbrirFormulariodeAdicao();
     }
 
     private void atribuirEventodeListaSimples(){
@@ -47,5 +50,18 @@ public class ListaAlunosActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    private void adicionarEventoparaAbrirFormulariodeAdicao(){
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_adicionar);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+                Intent it = new Intent(view.getContext(), FormularioActivity.class);
+                startActivity(it);
+            }
+        });
     }
 }
