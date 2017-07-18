@@ -13,6 +13,8 @@ public class FormularioActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_formulario);
         adicionarEventoSalvareFechar();
     }
@@ -32,14 +34,18 @@ public class FormularioActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_formulario, menu);
-
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
+            case android.R.id.home:{
+                finish();
+                return true;
+            }
             case R.id.menu_formulario_ok: {
+
                 Toast.makeText(this, "ok", Toast.LENGTH_LONG).show();
                 finish();
                 return false;
