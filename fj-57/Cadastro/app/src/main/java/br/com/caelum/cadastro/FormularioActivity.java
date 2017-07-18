@@ -22,7 +22,6 @@ public class FormularioActivity extends AppCompatActivity {
         btnFechar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), "voltando", Toast.LENGTH_LONG).show();
                 finish();
             }
         });
