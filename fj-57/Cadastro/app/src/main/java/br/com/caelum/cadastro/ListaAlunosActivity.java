@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,15 +22,6 @@ public class ListaAlunosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_alunos);
 
-        //String [] alunos = DataClass.geradordeAlunosAsString();
-       // this.listaAlunos = (ListView)findViewById(R.id.lvw_lista_alunos);
-
-       // ArrayAdapter<String>adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1, alunos);
-
-       // listaAlunos.setAdapter(adapter);
-        //atribuirEventodeListaSimples();
-        //atribuirEventodeListaLongo();
-       // adicionarEventoparaAbrirFormulariodeAdicao();
     }
 
     private void atribuirEventodeListaSimples(){
@@ -71,14 +63,18 @@ public class ListaAlunosActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
         this.listaAlunos = (ListView)findViewById(R.id.lvw_lista_alunos);
         AlunoDAO alunoDAO = new AlunoDAO(this);
         ArrayList<Aluno>alunos = alunoDAO.buscarTodos();
-
-        ArrayAdapter<Aluno>adapter = new ArrayAdapter<Aluno>(this, R.layout.item_aluno, alunos);
+        AlunoArrayAdapter adapter = new AlunoArrayAdapter(this, R.layout.item_aluno, alunos);
 
         listaAlunos.setAdapter(adapter);
         alunoDAO.liberarRecursos();
+        atribuirEventodeListaSimples();
 
+        //atribuirEventodeListaSimples();
+        //atribuirEventodeListaLongo();
+         adicionarEventoparaAbrirFormulariodeAdicao();
     }
 }

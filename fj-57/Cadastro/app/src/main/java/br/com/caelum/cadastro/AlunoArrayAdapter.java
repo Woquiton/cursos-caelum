@@ -16,34 +16,37 @@ import java.util.ArrayList;
  */
 
 public class AlunoArrayAdapter extends ArrayAdapter<Aluno> {
-    private ArrayList<Aluno> alunos;
 
-    public AlunoArrayAdapter(@NonNull Context context, @LayoutRes int resource, ArrayList<Aluno> objects) {
-        super(context, resource, objects);
-        this.alunos = objects;
+
+    ArrayList<Aluno> alunos;
+
+    public AlunoArrayAdapter(Context context, int textViewResourceId, ArrayList<Aluno> objects) {
+        super(context, textViewResourceId, objects);
+        alunos = objects;
     }
 
-    public View getView(int position, View convertView, ViewGroup parent){
+    @Override
+    public int getCount() {
+        return super.getCount();
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+
+
         View v = convertView;
+        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        v = inflater.inflate(R.layout.item_aluno, null);
 
-        if (v == null) {
-            LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = inflater.inflate(R.layout.item_aluno, null);
-        }
+        TextView txvw_nome = (TextView) v.findViewById(R.id.txvw_nome);
+        TextView txvw_nota = (TextView) v.findViewById(R.id.txvw_nota);
+        TextView txvw_telefone = (TextView) v.findViewById(R.id.txvw_telefone);
 
-        Aluno itemAluno = alunos.get(position);
+        txvw_nome.setText(alunos.get(position).getNome());
+        txvw_nota.setText( String.valueOf(alunos.get(position).getNota()));
+        txvw_telefone.setText(alunos.get(position).getTelefone());
 
-        if (itemAluno != null) {
-            TextView txvw_nome = (TextView) v.findViewById(R.id.txvw_nome);
-            TextView txvw_nota = (TextView) v.findViewById(R.id.txvw_nota);
-            TextView txvw_telefone = (TextView) v.findViewById(R.id.txvw_telefone);
-
-            txvw_nome.setText(itemAluno.getNome());
-            txvw_nota.setText(String.valueOf(itemAluno.getNota()));
-            txvw_telefone.setText(itemAluno.getTelefone());
-        }
         return v;
 
     }
-
 }
