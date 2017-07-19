@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class AlunoArrayAdapter extends ArrayAdapter<Aluno> {
     private ArrayList<Aluno> alunos;
 
-    public AlunoArrayAdapter(@NonNull Context context, @LayoutRes int resource, ArrayList<Aluno> objects) { 
+    public AlunoArrayAdapter(@NonNull Context context, @LayoutRes int resource, ArrayList<Aluno> objects) {
         super(context, resource, objects);
         this.alunos = objects;
     }
@@ -37,7 +37,6 @@ public class AlunoArrayAdapter extends ArrayAdapter<Aluno> {
         txvw_nome.setText(itemAluno.getNome());
         txvw_nota.setText(String.valueOf(itemAluno.getNota()));
         txvw_telefone.setText(itemAluno.getTelefone());
-
 
         return v;
 
