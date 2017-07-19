@@ -21,15 +21,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_alunos);
 
-        //String [] alunos = DataClass.geradordeAlunosAsString();
-       // this.listaAlunos = (ListView)findViewById(R.id.lvw_lista_alunos);
 
-       // ArrayAdapter<String>adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1, alunos);
-
-       // listaAlunos.setAdapter(adapter);
-        //atribuirEventodeListaSimples();
-        //atribuirEventodeListaLongo();
-       // adicionarEventoparaAbrirFormulariodeAdicao();
     }
 
     private void atribuirEventodeListaSimples(){
@@ -79,6 +71,11 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
         listaAlunos.setAdapter(adapter);
         alunoDAO.liberarRecursos();
+
+        // listaAlunos.setAdapter(adapter);
+       // atribuirEventodeListaSimples();
+        atribuirEventodeListaLongo();
+        adicionarEventoparaAbrirFormulariodeAdicao();
 
     }
 }
