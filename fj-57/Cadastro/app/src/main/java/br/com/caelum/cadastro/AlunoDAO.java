@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -65,5 +66,9 @@ class AlunoDAO  extends SQLiteOpenHelper{
 
     public ArrayList<Aluno>buscarTodos(){
         return DataClass.geradordeAlunos();
+    }
+
+    public void deletar(Aluno alunoSelecionado) {
+        Log.i("DAO", "exclusao bem feita");
     }
 }
