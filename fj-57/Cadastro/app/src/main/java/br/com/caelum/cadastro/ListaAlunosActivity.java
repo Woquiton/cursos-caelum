@@ -75,7 +75,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
         AlunoDAO alunoDAO = new AlunoDAO(this);
         ArrayList<Aluno>alunos = alunoDAO.buscarTodos();
 
-        ArrayAdapter<Aluno>adapter = new ArrayAdapter<Aluno>(this, R.layout.item_aluno, alunos);
+        AlunoArrayAdapter adapter = new AlunoArrayAdapter(this, R.layout.item_aluno, alunos);
 
         listaAlunos.setAdapter(adapter);
         alunoDAO.liberarRecursos();
